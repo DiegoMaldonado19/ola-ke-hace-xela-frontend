@@ -14,6 +14,8 @@ export interface ReportModelDTO {
   comment: string;
 }
 
-export interface ReportCollection{
+export interface ReportCollectionDTO{
   reports: ReportModelDTO[];
 }
+
+export interface UpdateReportDTO extends Partial<CreateReportDTO>{ }

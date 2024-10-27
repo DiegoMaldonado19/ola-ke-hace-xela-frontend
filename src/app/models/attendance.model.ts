@@ -15,3 +15,5 @@ export interface AttendanceModelDTO {
 export interface AttendanceCollectionDTO{
   attendances: AttendanceModelDTO[];
 }
+
+export interface UpdateAttendanceDTO extends Partial<CreateAttendanceDTO>{}

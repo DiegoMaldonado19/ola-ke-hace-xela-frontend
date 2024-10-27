@@ -10,3 +10,5 @@ export interface PostCategoryModelDTO {
 export interface PostCategoryCollectionDTO{
     category: PostCategoryModelDTO[];
 }
+
+export interface UpdatePostCategoryDTO extends Partial<CreatePostCategoryDTO>{}

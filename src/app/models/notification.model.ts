@@ -17,3 +17,5 @@ export interface NotificationModelDTO {
 export interface NotificationCollectionDTO{
   notifications: NotificationModelDTO[];
 }
+
+export interface UpdateNotificationDTO extends Partial<CreateNotificationDTO>{}

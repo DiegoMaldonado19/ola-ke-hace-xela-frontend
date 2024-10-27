@@ -15,3 +15,5 @@ export interface ApprovedPostModelDTO{
 export interface ApprovedPostCollectionDTO{
   approved_posts: ApprovedPostModelDTO[];
 }
+
+export interface UpdateApprovedPostDTO extends Partial<CreateApprovedPostDTO>{ }

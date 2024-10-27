@@ -26,3 +26,5 @@ export interface UserModelDTO {
 export interface UserCollectionDTO {
   users: UserModelDTO[];
 }
+
+export interface UpdateUserDTO extends Partial<CreateUserDTO>{ }

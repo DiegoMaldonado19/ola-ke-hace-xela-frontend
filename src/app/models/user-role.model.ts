@@ -10,3 +10,5 @@ export interface UserRoleModelDTO {
 export interface UserRoleCollectionDTO {
   role: UserRoleModelDTO[];
 }
+
+export interface UpdateRoleDTO extends Partial<CreateRoleDTO>{ }

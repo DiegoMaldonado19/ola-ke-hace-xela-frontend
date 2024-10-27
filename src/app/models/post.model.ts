@@ -29,3 +29,5 @@ export interface PostModelDTO {
 export interface PostCollectionDTO {
   posts: PostModelDTO[];
 }
+
+export interface UpdatePostDTO extends Partial<CreatePostDTO>{ }
