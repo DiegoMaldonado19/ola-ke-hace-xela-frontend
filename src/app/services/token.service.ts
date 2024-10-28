@@ -17,4 +17,12 @@ export class TokenService {
     return token;
   }
 
+  getBody() {
+    const body = {
+      token: this.getToken() // Incluyendo el token en el cuerpo
+    };
+
+    return body;
+  }
+
 }

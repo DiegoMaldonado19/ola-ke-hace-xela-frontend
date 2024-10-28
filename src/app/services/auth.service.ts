@@ -26,8 +26,8 @@ export class AuthService {
       );
   }
 
-  getProfile(){
-    return this.http.post<UserModelDTO>(`${this.apiUrl}/profile`, { });
+  getProfile() {
+    return this.http.post<UserModelDTO>(`${this.apiUrl}/profile`, this.tokenService.getBody());
   }
 
   loginAndGet(email: string, password: string, username: string) {
