@@ -12,7 +12,7 @@ import { TokenService } from '../services/token.service';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/login'
+  private apiUrl = 'http://localhost:8000/api'
 
   constructor(
     private http: HttpClient,
@@ -27,8 +27,7 @@ export class AuthService {
   }
 
   getProfile(){
-    return this.http.get<UserModelDTO>(`${this.apiUrl}/profile`, {
-    });
+    return this.http.post<UserModelDTO>(`${this.apiUrl}/profile`, { });
   }
 
   loginAndGet(email: string, password: string, username: string) {

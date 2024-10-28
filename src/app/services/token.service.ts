@@ -9,6 +9,7 @@ export class TokenService {
 
   saveToken(token: string) {
     localStorage.setItem('token', token);
+    console.log(localStorage.getItem('token'));
   }
 
   getToken() {
