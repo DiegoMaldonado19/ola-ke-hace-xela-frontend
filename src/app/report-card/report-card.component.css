@@ -1,0 +1,8 @@
+.report-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  background-color: #f9f9f9;
+  position: absolute; /* Ajusta según tu diseño */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  width: 300px; /* Ajusta el ancho según sea necesario */
+}

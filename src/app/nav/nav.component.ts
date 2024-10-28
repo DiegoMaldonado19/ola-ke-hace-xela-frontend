@@ -27,4 +27,8 @@ export class NavComponent {
   navigateToHome() {
     this.router.navigate(['']);
   }
+
+  navigateToRegister(){
+    this.router.navigate(['/register']);
+  }
 }

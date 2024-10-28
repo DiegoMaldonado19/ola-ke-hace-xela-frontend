@@ -5,18 +5,16 @@
     </mat-card-header>
     <mat-card-content>
       <p>Descripción: {{ post.description }}</p>
-    </mat-card-content>
-    <mat-card-content>
       <p>Lugar: {{ post.place }}</p>
-    </mat-card-content>
-    <mat-card-content>
       <p>Inicio: {{ post.start_date_time }}</p>
-    </mat-card-content>
-    <mat-card-content>
       <p>Finalización: {{ post.end_date_time }}</p>
-    </mat-card-content>
-    <mat-card-content>
       <p>Categoria: {{ post.category.category_name }}</p>
+      <mat-card-content *ngIf="userId">
+        <button mat-button (click)="openReportCard(post.id)">Reportar Publicación</button>
+      </mat-card-content>
     </mat-card-content>
   </mat-card>
 </div>
+
+<!-- Tarjeta de reporte -->
+<app-report-card *ngIf="showReportCard" [postId]="selectedPostId" (closeCard)="closeReportCard()"></app-report-card>

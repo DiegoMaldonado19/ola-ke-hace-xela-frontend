@@ -6,6 +6,7 @@ import {UserModelDTO} from '../models/user.model';
 import {MatInputModule} from '@angular/material/input';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
+import {Router, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterOutlet
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -27,7 +29,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -44,9 +47,11 @@ export class LoginComponent {
             this.profile = profile;
             localStorage.setItem('user_id', String(this.profile.id));
             console.log('Login successful, profile:', profile);
+            this.router.navigate(['']);
           },
           error => {
             console.error('Login failed', error);
+            this.router.navigate(['']);
           }
         );
       }

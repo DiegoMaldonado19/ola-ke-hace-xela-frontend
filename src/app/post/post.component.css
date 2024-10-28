@@ -1,0 +1,13 @@
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas en el contenedor */
+}
+
+.post-card {
+  display: flex; /* Usar flexbox para el contenido de la tarjeta */
+  flex-direction: column; /* Alinear en columna */
+  align-items: center; /* Centrar horizontalmente */
+  text-align: center; /* Centrar el texto */
+  margin: 10px; /* Espaciado entre tarjetas */
+}

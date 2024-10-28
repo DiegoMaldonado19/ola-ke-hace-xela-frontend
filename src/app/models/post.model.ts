@@ -30,4 +30,7 @@ export interface PostCollectionDTO {
   posts: PostModelDTO[];
 }
 
-export interface UpdatePostDTO extends Partial<CreatePostDTO>{ }
+export interface UpdatePostDTO extends Partial<CreatePostDTO>{
+  post_strike_count: number;
+  approved: boolean;
+}

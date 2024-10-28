@@ -27,7 +27,17 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.http.post<UserModelDTO>(`${this.apiUrl}/profile`, this.tokenService.getBody());
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.tokenService.getToken()}`
+    });
+
+    return this.http.post<UserModelDTO>(`${this.apiUrl}/profile`, {}, { headers }).pipe(
+      tap((user: UserModelDTO) => {
+        // Guarda el user_id en localStorage
+        localStorage.setItem('user_id', user.id.toString()); // Asegúrate de que user.id sea el valor correcto
+        console.log('User ID guardado en localStorage:', user.id);
+      })
+    );
   }
 
   loginAndGet(email: string, password: string, username: string) {

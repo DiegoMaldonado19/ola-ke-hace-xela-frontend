@@ -10,6 +10,7 @@ import {throwError} from 'rxjs';
 export class UserService {
 
   private apiUrl = 'http://localhost:8000/api/v1/user'
+  private apiUrl1 = 'http://localhost:8000/api/register'
 
   constructor(
     private http: HttpClient
@@ -34,6 +35,23 @@ export class UserService {
 
   create(dto: CreateUserDTO){
     return this.http.post<UserModelDTO>(this.apiUrl, dto).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.InternalServerError) {
+          return throwError('Algo esta fallando en el server');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          return throwError('El usuario no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          return throwError('No tienes permitido ingresar a esta URL');
+        }
+        return throwError('Ups algo salio mal');
+      })
+    )
+  }
+
+  registerUser(dto: CreateUserDTO){
+    return this.http.post<UserModelDTO>(this.apiUrl1, dto).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === HttpStatusCode.InternalServerError) {
           return throwError('Algo esta fallando en el server');
