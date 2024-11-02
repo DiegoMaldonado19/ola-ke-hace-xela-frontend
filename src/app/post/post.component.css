@@ -4,10 +4,17 @@
   justify-content: center; /* Centra las tarjetas en el contenedor */
 }
 
+.post-container {
+  display: flex; /* Usar flexbox para alinear el post y la tarjeta de reporte */
+  flex-direction: row; /* Alinear en fila */
+  align-items: flex-start; /* Alinear al inicio verticalmente */
+  margin: 10px; /* Espaciado entre contenedores */
+}
+
 .post-card {
   display: flex; /* Usar flexbox para el contenido de la tarjeta */
   flex-direction: column; /* Alinear en columna */
   align-items: center; /* Centrar horizontalmente */
   text-align: center; /* Centrar el texto */
-  margin: 10px; /* Espaciado entre tarjetas */
+  margin-right: 10px; /* Espaciado entre la tarjeta y la tarjeta de reporte */
 }

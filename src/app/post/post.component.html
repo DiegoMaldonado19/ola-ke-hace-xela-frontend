@@ -1,20 +1,20 @@
 <div class="post-list">
-  <mat-card *ngFor="let post of postCollection.posts" class="post-card">
-    <mat-card-header>
-      <mat-card-title>Evento: {{ post.title }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Descripción: {{ post.description }}</p>
-      <p>Lugar: {{ post.place }}</p>
-      <p>Inicio: {{ post.start_date_time }}</p>
-      <p>Finalización: {{ post.end_date_time }}</p>
-      <p>Categoria: {{ post.category.category_name }}</p>
-      <mat-card-content *ngIf="userId">
-        <button mat-button (click)="openReportCard(post.id)">Reportar Publicación</button>
+  <div *ngFor="let post of postCollection.posts" class="post-container">
+    <mat-card class="post-card">
+      <mat-card-header>
+        <mat-card-title>Evento: {{ post.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Descripción: {{ post.description }}</p>
+        <p>Lugar: {{ post.place }}</p>
+        <p>Inicio: {{ post.start_date_time }}</p>
+        <p>Finalización: {{ post.end_date_time }}</p>
+        <p>Categoria: {{ post.category.category_name }}</p>
+        <mat-card-content *ngIf="userId">
+          <button mat-button (click)="openReportCard(post.id)">Reportar Publicación</button>
+        </mat-card-content>
       </mat-card-content>
-    </mat-card-content>
-  </mat-card>
+    </mat-card>
+    <app-report-card *ngIf="showReportCard && selectedPostId === post.id" [postId]="selectedPostId" (closeCard)="closeReportCard()" (reportSubmitted)="handleReportSubmitted($event)"></app-report-card>
+  </div>
 </div>
-
-<!-- Tarjeta de reporte -->
-<app-report-card *ngIf="showReportCard" [postId]="selectedPostId" (closeCard)="closeReportCard()"></app-report-card>

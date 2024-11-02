@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="navbar">
   <button mat-button (click)="navigateToHome()">Home</button>
-  <button mat-button (click)="navigateToLogin()">Inicio de Sesión</button>
+  <button mat-button *ngIf="!isLoggedIn" (click)="navigateToLogin()">Inicio de Sesión</button>
   <button mat-button (click)="navigateToRegister()">Registrarse</button>
 </mat-toolbar>

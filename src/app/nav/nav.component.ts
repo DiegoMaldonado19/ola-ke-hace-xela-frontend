@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import {MatToolbar} from '@angular/material/toolbar';
-import {CommonModule} from '@angular/common';
-import {MatButton} from '@angular/material/button';
-import {Router, RouterOutlet} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -14,11 +14,16 @@ import {Router, RouterOutlet} from '@angular/router';
     RouterOutlet
   ],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.isLoggedIn = !!localStorage.getItem('user_id');
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);
@@ -28,7 +33,7 @@ export class NavComponent {
     this.router.navigate(['']);
   }
 
-  navigateToRegister(){
+  navigateToRegister() {
     this.router.navigate(['/register']);
   }
 }

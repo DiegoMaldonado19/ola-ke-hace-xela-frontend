@@ -34,6 +34,23 @@ export class PostService {
     )
   }
 
+  getPostById(id: number){
+    return this.http.get<PostModelDTO>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.InternalServerError) {
+          return throwError('Algo esta fallando en el server');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          return throwError('La Publicación no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          return throwError('No tienes permitido ingresar a esta URL');
+        }
+        return throwError('Ups algo salio mal');
+      })
+    )
+}
+
   getAllApprovedPost(){
     return this.http.get<PostCollectionDTO>(this.apiUrl1).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -85,7 +102,7 @@ export class PostService {
     )
   }
 
-  update(id: number, dto: UpdatePostDTO){
+  update(dto: UpdatePostDTO, id: number){
     return this.http.put(`${this.apiUrl}/${id}`, dto).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === HttpStatusCode.InternalServerError) {
