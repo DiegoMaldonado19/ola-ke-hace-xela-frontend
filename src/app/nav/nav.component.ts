@@ -76,14 +76,14 @@ export class NavComponent implements OnInit {
   }
 
   navigateToUsers() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/admin-users']);
   }
 
   navigateToReports() {
-    this.router.navigate(['/reports']);
+    this.router.navigate(['/admin-reports']);
   }
 
   navigateToCreatePublication() {
-    this.router.navigate(['/create-publication']);
+    this.router.navigate(['/create-post']);
   }
 }
