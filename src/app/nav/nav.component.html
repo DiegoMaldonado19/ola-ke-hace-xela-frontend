@@ -1,5 +1,22 @@
 <mat-toolbar color="primary" class="navbar">
   <button mat-button (click)="navigateToHome()">Home</button>
   <button mat-button *ngIf="!isLoggedIn" (click)="navigateToLogin()">Inicio de Sesión</button>
-  <button mat-button (click)="navigateToRegister()">Registrarse</button>
+  <button mat-button *ngIf="!isLoggedIn" (click)="navigateToRegister()">Registrarse</button>
+  <button mat-icon-button *ngIf="isLoggedIn" (click)="toggleNotifications()">
+    <mat-icon>notifications</mat-icon>
+  </button>
 </mat-toolbar>
+
+<div *ngIf="showNotifications" class="notification-card mat-elevation-z4">
+  <mat-card>
+    <mat-card-title>Notificaciones</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let notification of notificationCollection.notifications" [ngClass]="{'unread-notification': !notification.already_read}">
+        <p>{{ notification.message }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="markAllAsRead()">Marcar todas como leídas</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

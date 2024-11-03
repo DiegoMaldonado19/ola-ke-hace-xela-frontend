@@ -46,6 +46,10 @@ export class LoginComponent {
           profile => {
             this.profile = profile;
             localStorage.setItem('user_id', String(this.profile.id));
+            localStorage.setItem('user_name', String(this.profile.name));
+            localStorage.setItem('user_lastname', String(this.profile.lastname));
+            localStorage.setItem('username', String(this.profile.username));
+            localStorage.setItem('role_name', String(this.profile.role.role_name));
             console.log('Login successful, profile:', profile);
             this.router.navigate(['']);
           },
