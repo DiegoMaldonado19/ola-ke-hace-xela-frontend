@@ -43,12 +43,10 @@ export class ReportCardComponent {
             start_date_time: post.start_date_time,
             end_date_time: post.end_date_time,
             capacity_limit: post.capacity_limit,
-            category_id: post.category.id,
+            category_id: Number(post.category.id),
             post_strike_count: strikeCount,
             approved: post.approved
           };
-
-          console.log(postUpdated);
 
           const newReport: CreateReportDTO = {
             post_id: post.id,
@@ -56,9 +54,7 @@ export class ReportCardComponent {
             comment: this.comment
           };
 
-          console.log(newReport);
-
-          this.postService.update(postUpdated, this.postId).subscribe(
+          this.postService.increaseStrikeCount(this.postId).subscribe(
             (response) => {
               console.log('Post actualizado:', response);
               this.reportService.create(newReport).subscribe(

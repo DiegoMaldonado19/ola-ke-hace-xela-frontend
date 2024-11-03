@@ -69,6 +69,5 @@ export class PostComponent implements OnInit {
 
   // Método para manejar el evento reportSubmitted
   handleReportSubmitted(event: { postId: number; comment: string }) {
-    console.log('Reporte enviado:', event);
   }
 }
