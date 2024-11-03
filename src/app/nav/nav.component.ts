@@ -27,6 +27,7 @@ export class NavComponent implements OnInit {
   notificationCollection: NotificationCollectionDTO = { notifications: [] };
   userId = 1;
   showNotifications: boolean = false;
+  role: string | null = null;
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = !!localStorage.getItem('user_id');
+    this.role = localStorage.getItem('role_name');
     if (this.isLoggedIn) {
       this.loadNotifications();
     }
@@ -67,5 +69,21 @@ export class NavComponent implements OnInit {
 
   navigateToRegister() {
     this.router.navigate(['/register']);
+  }
+
+  navigateToPublications() {
+    this.router.navigate(['/publications']);
+  }
+
+  navigateToUsers() {
+    this.router.navigate(['/users']);
+  }
+
+  navigateToReports() {
+    this.router.navigate(['/reports']);
+  }
+
+  navigateToCreatePublication() {
+    this.router.navigate(['/create-publication']);
   }
 }

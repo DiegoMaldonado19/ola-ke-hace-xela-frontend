@@ -5,6 +5,11 @@
   <button mat-icon-button *ngIf="isLoggedIn" (click)="toggleNotifications()">
     <mat-icon>notifications</mat-icon>
   </button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToPublications()">Publicaciones</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToUsers()">Usuarios</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToReports()">Reportes</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Usuario'" (click)="navigateToCreatePublication()">Crear Publicación</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Empleado'" (click)="navigateToPublications()">Publicaciones</button>
 </mat-toolbar>
 
 <div *ngIf="showNotifications" class="notification-card mat-elevation-z4">
