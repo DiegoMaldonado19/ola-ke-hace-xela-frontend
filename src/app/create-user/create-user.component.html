@@ -1,4 +1,4 @@
-<form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="createUserForm" (ngSubmit)="onSubmit()" class="form-container">
 
   <mat-form-field appearance="fill">
     <mat-label>Nombre de usuario</mat-label>
@@ -27,8 +27,8 @@
   <mat-form-field appearance="fill">
     <mat-label>Rol</mat-label>
     <mat-select formControlName="role" required>
-      <mat-option *ngFor="let role of roleCollection" [value]="role.id">
-        {{ role.name }}
+      <mat-option *ngFor="let role of roleCollection.role" [value]="role.id">
+        {{ role.role_name }}
       </mat-option>
     </mat-select>
     <mat-error *ngIf="createUserForm.get('role')?.hasError('required')">

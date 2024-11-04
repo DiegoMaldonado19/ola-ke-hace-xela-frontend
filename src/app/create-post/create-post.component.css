@@ -1,0 +1,9 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre los campos */
+}
+
+.mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,75 @@
+<div class="edit-card">
+  <h3>Edicion de Usuario</h3>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="username" required>
+      <mat-error *ngIf="editForm.get('username')?.hasError('required')">
+        El nombre de usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="editForm.get('email')?.hasError('required')">
+        El correo electrónico es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" required>
+      <mat-error *ngIf="editForm.get('password')?.hasError('required')">
+        La contraseña es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rol</mat-label>
+      <input matInput formControlName="role" required>
+      <mat-error *ngIf="editForm.get('role')?.hasError('required')">
+        El rol de usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CUI</mat-label>
+      <input matInput formControlName="cui" required>
+      <mat-error *ngIf="editForm.get('cui')?.hasError('required')">
+        El rol de usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="editForm.get('name')?.hasError('required')">
+        Los nombres del usuario son obligatorios.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastname" required>
+      <mat-error *ngIf="editForm.get('lastname')?.hasError('required')">
+        Los apellidos del usuario son obligatorios.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Numero de Telefono</mat-label>
+      <input matInput formControlName="phone" required>
+      <mat-error *ngIf="editForm.get('phone')?.hasError('required')">
+        Los apellidos del usuario son obligatorios.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Registrar usuario</button>
+    <button mat-raised-button color="primary" (click)="close()">Cerrar</button>
+
+  </form>
+
+
+</div>

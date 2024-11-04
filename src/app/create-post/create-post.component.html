@@ -1,4 +1,4 @@
-<form [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="createPostForm" (ngSubmit)="onSubmit()" class="form-container">
   <mat-form-field appearance="fill">
     <mat-label>Titulo del Evento</mat-label>
     <input matInput formControlName="title" required>
@@ -70,8 +70,8 @@
   <mat-form-field appearance="fill">
     <mat-label>Categoria</mat-label>
     <mat-select formControlName="category" required>
-      <mat-option *ngFor="let category of categories" [value]="category.id">
-        {{ category.name }}
+      <mat-option *ngFor="let category of categories.category" [value]="category.id">
+        {{ category.category_name }}
       </mat-option>
     </mat-select>
     <mat-error *ngIf="createPostForm.get('category')?.hasError('required')">
@@ -80,5 +80,4 @@
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">Crear Publicación</button>
-
 </form>

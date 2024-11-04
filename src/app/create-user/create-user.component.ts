@@ -6,7 +6,7 @@ import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {UserService} from '../services/user.service';
 import {CreateUserDTO} from '../models/user.model';
 import {UserRoleCollectionDTO} from '../models/user-role.model';
@@ -16,22 +16,23 @@ import {Router, RouterOutlet} from '@angular/router';
 @Component({
   selector: 'app-create-user',
   standalone: true,
-    imports: [
-        FormsModule,
-        MatButton,
-        MatDatepicker,
-        MatDatepickerInput,
-        MatDatepickerToggle,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatOption,
-        MatSelect,
-        NgIf,
-        ReactiveFormsModule,
-        RouterOutlet,
-    ],
+  imports: [
+    FormsModule,
+    MatButton,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    NgIf,
+    ReactiveFormsModule,
+    RouterOutlet,
+    NgForOf,
+  ],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.css'
 })
@@ -40,7 +41,7 @@ export class CreateUserComponent implements OnInit {
 
     newUser: CreateUserDTO | null = null;
 
-    roleCollection: UserRoleCollectionDTO | null = null;
+    roleCollection: UserRoleCollectionDTO = { role: [] };
 
     constructor(
       private fb: FormBuilder,

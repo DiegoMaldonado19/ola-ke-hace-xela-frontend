@@ -6,8 +6,8 @@ export interface CreatePostDTO{
   title: string;
   description: string;
   place: string;
-  start_date_time: Date;
-  end_date_time: Date;
+  start_date_time: Date | string;
+  end_date_time: Date | string;
   capacity_limit: number;
   category_id: number;
 }

@@ -10,7 +10,7 @@ import { throwError} from 'rxjs';
 })
 export class UserRoleService {
 
-  private apiUrl = 'http://localhost:8000/api/v1/user-role'
+  private apiUrl = 'http://localhost:8000/api/v1/role'
 
   constructor(
     private http: HttpClient

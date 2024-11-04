@@ -75,8 +75,12 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/publications']);
   }
 
-  navigateToUsers() {
+  navigateToUserPanel() {
     this.router.navigate(['/admin-users']);
+  }
+
+  navigateToUserCreation() {
+    this.router.navigate(['/create-user']);
   }
 
   navigateToReports() {
@@ -85,5 +89,10 @@ export class NavComponent implements OnInit {
 
   navigateToCreatePublication() {
     this.router.navigate(['/create-post']);
+  }
+
+  endSession(){
+    localStorage.clear();
+    window.location.reload();
   }
 }

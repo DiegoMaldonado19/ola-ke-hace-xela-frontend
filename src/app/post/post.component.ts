@@ -8,6 +8,8 @@ import { NgForOf, NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
 import { ReportCardComponent } from '../report-card/report-card.component';
+import {AttendanceService} from '../services/attendance.service';
+import {CreateAttendanceDTO} from '../models/attendance.model';
 
 @Component({
   selector: 'app-post',
@@ -34,7 +36,8 @@ export class PostComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private attendanceService: AttendanceService
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +70,25 @@ export class PostComponent implements OnInit {
     );
   }
 
-  // Método para manejar el evento reportSubmitted
   handleReportSubmitted(event: { postId: number; comment: string }) {
+  }
+
+  onEventAssist(postId: number){
+
+    const newAttendance: CreateAttendanceDTO = {
+      user_id: Number(localStorage.getItem('user_id')),
+      post_id: postId
+    }
+
+    console.log(newAttendance);
+
+      this.attendanceService.create(newAttendance).subscribe(
+        (response) => {
+          console.log('Asistencia creada con exito: ', response)
+        },
+        (error) => {
+          console.log('Ocurio un error durante la creacion de asistencia');
+        }
+      )
   }
 }

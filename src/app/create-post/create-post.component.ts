@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {NgIf} from '@angular/common';
-import {MatButton} from '@angular/material/button';
-import {Router} from '@angular/router';
-import {PostService} from '../services/post.service';
-import {PostCategoryService} from '../services/post-category.service';
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import {NgForOf, NgIf} from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { Router } from '@angular/router';
+import { PostService } from '../services/post.service';
+import { PostCategoryService } from '../services/post-category.service';
+import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from '@angular/material/datepicker';
 import { CreatePostDTO } from '../models/post.model';
-import {PostCategoryCollectionDTO} from '../models/post-category.model';
-import {MatOption} from '@angular/material/core';
-import {MatSelect} from '@angular/material/select';
+import { PostCategoryCollectionDTO } from '../models/post-category.model';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-create-post',
@@ -29,18 +30,20 @@ import {MatSelect} from '@angular/material/select';
     MatDatepicker,
     MatDatepickerInput,
     MatOption,
-    MatSelect
+    MatSelect,
+    MatNativeDateModule,
+    NgForOf
   ],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css'
 })
-export class CreatePostComponent implements OnInit{
+export class CreatePostComponent implements OnInit {
 
   createPostForm: FormGroup;
 
   newPost: CreatePostDTO | null = null;
 
-  categories: PostCategoryCollectionDTO | null = null;
+  categories: PostCategoryCollectionDTO = { category: [] };
 
   constructor(
     private fb: FormBuilder,
@@ -69,7 +72,7 @@ export class CreatePostComponent implements OnInit{
     })
   }
 
-  onSubmit(){
+  onSubmit() {
     const formValues = this.createPostForm.value;
 
     const startDateTime = new Date(formValues.start_date);
@@ -80,16 +83,24 @@ export class CreatePostComponent implements OnInit{
     const [endHours, endMinutes] = formValues.end_time.split(':');
     endDateTime.setHours(endHours, endMinutes);
 
+    // Convertir a formato MySQL
+    const formatDateTimeForMySQL = (date: Date) => {
+      return date.toISOString().slice(0, 19).replace('T', ' ');
+    };
+
     this.newPost = {
       user_id: Number(localStorage.getItem('user_id')),
       title: formValues.title,
       description: formValues.description,
       place: formValues.place,
-      start_date_time: startDateTime,
-      end_date_time: endDateTime,
-      capacity_limit: formValues.capacity_limit,
+      start_date_time: formatDateTimeForMySQL(startDateTime),
+      end_date_time: formatDateTimeForMySQL(endDateTime),
+      capacity_limit: Number(formValues.capacity_limit),
       category_id: formValues.category
-    }
+    };
+
+
+    console.log(this.newPost);
 
     this.postService.create(this.newPost).subscribe(
       response => {

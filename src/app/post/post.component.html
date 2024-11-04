@@ -12,6 +12,7 @@
         <p>Categoria: {{ post.category.category_name }}</p>
         <mat-card-content *ngIf="userId">
           <button mat-button (click)="openReportCard(post.id)">Reportar Publicación</button>
+          <button mat-button (click)="onEventAssist(post.id)">Asistir a Evento</button>
         </mat-card-content>
       </mat-card-content>
     </mat-card>

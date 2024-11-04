@@ -1,1 +1,20 @@
-<p>user works!</p>
+<div class="user-list">
+  <div *ngFor="let user of userCollection.users" class="user-container">
+    <mat-card class="user-card">
+      <mat-card-header>
+        <mat-card-title>Usuario: {{ user.username }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Nombre: {{ user.name }}</p>
+        <p>Apellido: {{ user.lastname }}</p>
+        <p>CUI: {{ user.cui }}</p>
+        <p>Correo Electronico: {{ user.email }}</p>
+        <p>Rol: {{ user.role.role_name }}</p>
+        <mat-card-content>
+          <button mat-button (click)="openEditCard(user.id)">Editar Usuario</button>
+        </mat-card-content>
+      </mat-card-content>
+    </mat-card>
+    <app-edit-user *ngIf="showEditCard && selectedUser === user.id" [userId]="selectedUser!" (closeCard)="closeEditCard()" (editSubmitted)="handleEditSubmitted($event)"></app-edit-user>
+  </div>
+</div>
