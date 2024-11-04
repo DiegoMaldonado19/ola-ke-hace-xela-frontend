@@ -153,6 +153,23 @@ export class PostService {
     )
   }
 
+  disapprovePost(id: number){
+    return this.http.put(`${this.apiUrl}/disapprove-post/${id}`, { }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.InternalServerError) {
+          return throwError('Algo esta fallando en el server');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          return throwError('La Publicación no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          return throwError('No tienes permitido ingresar a esta URL');
+        }
+        return throwError('Ups algo salio mal');
+      })
+    )
+  }
+
   delete(id: number){
     return this.http.delete(`${this.apiUrl}/${id}`).pipe(
       catchError((error: HttpErrorResponse) => {

@@ -41,4 +41,14 @@ export class ReportsComponent implements OnInit {
       data: { postId: postId }
     });
   }
+
+  removeApproved(postId: number){
+    this.postService.disapprovePost(postId).subscribe(
+      (response) => {
+        console.log("Publicacion desaprobada con exito", response)
+      }, (error) => {
+        console.log("Ocurrio un error", error)
+      }
+    );
+  }
 }

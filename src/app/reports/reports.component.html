@@ -12,6 +12,7 @@
         <p>Categoria: {{ post.category.category_name }}</p>
         <mat-card-content>
           <button mat-button (click)="reviewReports(post.id)">Revisar reportes para este post</button>
+          <button mat-button (click)="removeApproved(post.id)">Desaprobar Post</button>
         </mat-card-content>
       </mat-card-content>
     </mat-card>
