@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Reportes para el Post</h1>
+<div mat-dialog-content>
+  <table *ngIf="reportCollection.reports.length > 0">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Comentario</th>
+      <th>Usuario que reporta</th>
+      <th>Post reportado</th>
+      <th>Usuario que creo el post reportado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let report of reportCollection.reports">
+      <td>{{ report.id }}</td>
+      <td>{{ report.comment }}</td>
+      <td>{{ report.user.name }}</td>
+      <td>{{ report.post.title }}</td>
+      <td>{{ report.post.user.name }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <p *ngIf="reportCollection.reports.length === 0">No se encontraron reportes para este post.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cerrar</button>
+</div>

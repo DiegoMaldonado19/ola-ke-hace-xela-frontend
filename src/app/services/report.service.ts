@@ -32,6 +32,24 @@ export class ReportService {
     )
   }
 
+  getReportsByPostId(postId: number){
+    return this.http.get<ReportCollectionDTO>(`${this.apiUrl}/post/${postId}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.InternalServerError) {
+          return throwError('Algo esta fallando en el server');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          return throwError('El reporte no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          return throwError('No tienes permitido ingresar a esta URL');
+        }
+        return throwError('Ups algo salio mal');
+      })
+    )
+  }
+
+
   create(dto: CreateReportDTO){
     return this.http.post<ReportModelDTO>(this.apiUrl, dto).pipe(
       catchError((error: HttpErrorResponse) => {

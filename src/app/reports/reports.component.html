@@ -1,1 +1,19 @@
-<p>reports works!</p>
+<div class="post-list">
+  <div *ngFor="let post of postCollection.posts" class="post-container">
+    <mat-card class="post-card">
+      <mat-card-header>
+        <mat-card-title>Evento: {{ post.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Descripción: {{ post.description }}</p>
+        <p>Lugar: {{ post.place }}</p>
+        <p>Inicio: {{ post.start_date_time }}</p>
+        <p>Finalización: {{ post.end_date_time }}</p>
+        <p>Categoria: {{ post.category.category_name }}</p>
+        <mat-card-content>
+          <button mat-button (click)="reviewReports(post.id)">Revisar reportes para este post</button>
+        </mat-card-content>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

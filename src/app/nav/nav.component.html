@@ -8,8 +8,10 @@
   <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToPublications()">Publicaciones Pendientes de Aprobación</button>
   <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToUserCreation()">Crear Usuario</button>
   <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToUserPanel()">Visualizar Usuarios</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Administrador'" (click)="navigateToReportPanel()">Visualizar Reportes</button>
   <button mat-button *ngIf="isLoggedIn && role === 'Usuario'" (click)="navigateToCreatePublication()">Crear Publicación</button>
-  <button mat-button *ngIf="isLoggedIn && role === 'Moderador'" (click)="navigateToPublications()">Publicaciones</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Moderador'" (click)="navigateToReportPanel()">Visualizar Reportes</button>
+  <button mat-button *ngIf="isLoggedIn && role === 'Moderador'" (click)="navigateToPublications()">Publicaciones Pendientes de Aprobación</button>
   <button mat-button *ngIf="isLoggedIn" (click)="endSession()">Cerrar Sesión</button>
 </mat-toolbar>
 

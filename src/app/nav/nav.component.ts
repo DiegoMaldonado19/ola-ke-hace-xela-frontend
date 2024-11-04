@@ -79,12 +79,12 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/admin-users']);
   }
 
-  navigateToUserCreation() {
-    this.router.navigate(['/create-user']);
+  navigateToReportPanel() {
+    this.router.navigate(['/admin-reports']);
   }
 
-  navigateToReports() {
-    this.router.navigate(['/admin-reports']);
+  navigateToUserCreation() {
+    this.router.navigate(['/create-user']);
   }
 
   navigateToCreatePublication() {
