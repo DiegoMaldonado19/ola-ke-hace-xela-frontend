@@ -1,0 +1,26 @@
+<div class="post-list">
+  <div *ngIf="notApprovedPostCollection.posts.length === 0" class="no-posts-card">
+    <mat-card class="post-card">
+      <mat-card-header>
+        <mat-card-title>No hay publicaciones pendientes de aprobación</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <div *ngFor="let post of notApprovedPostCollection.posts" class="post-container">
+    <mat-card class="post-card">
+      <mat-card-header>
+        <mat-card-title>Evento: {{ post.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Descripción: {{ post.description }}</p>
+        <p>Lugar: {{ post.place }}</p>
+        <p>Inicio: {{ post.start_date_time }}</p>
+        <p>Finalización: {{ post.end_date_time }}</p>
+        <p>Categoria: {{ post.category.category_name }}</p>
+        <mat-card-content>
+          <button mat-button (click)="approvePost(post.id)">Aprobar Publicación</button>
+        </mat-card-content>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

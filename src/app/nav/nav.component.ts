@@ -72,7 +72,7 @@ export class NavComponent implements OnInit {
   }
 
   navigateToPublications() {
-    this.router.navigate(['/publications']);
+    this.router.navigate(['/pending-approval-post']);
   }
 
   navigateToUserPanel() {

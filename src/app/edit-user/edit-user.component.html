@@ -1,6 +1,6 @@
 <div class="edit-card">
   <h3>Edicion de Usuario</h3>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-container">
 
     <mat-form-field appearance="fill">
       <mat-label>Nombre de usuario</mat-label>
@@ -66,7 +66,7 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Registrar usuario</button>
+    <button mat-raised-button color="primary" type="submit">Completar Edicion usuario</button>
     <button mat-raised-button color="primary" (click)="close()">Cerrar</button>
 
   </form>
